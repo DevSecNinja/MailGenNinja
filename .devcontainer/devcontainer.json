@@ -1,0 +1,25 @@
+{
+    "name": "Node.js",
+    "image": "mcr.microsoft.com/vscode/devcontainers/node:14",
+    "runArgs": [
+        "--init"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint"
+            ],
+            "settings": {
+                "terminal.integrated.profiles.linux": {
+                    "zsh (login)": {
+                        "path": "zsh",
+                        "args": [
+                            "-l"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "remoteUser": "node"
+}
