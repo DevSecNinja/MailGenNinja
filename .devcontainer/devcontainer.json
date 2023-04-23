@@ -4,10 +4,19 @@
     "runArgs": [
         "--init"
     ],
+	"features": {
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/terraform:1": {},
+		"ghcr.io/dhoeric/features/terraform-docs:1": {},
+		"ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {},
+		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
+	},
     "customizations": {
         "vscode": {
             "extensions": [
-                "dbaeumer.vscode-eslint"
+                "dbaeumer.vscode-eslint",
+                "hashicorp.terraform"
             ],
             "settings": {
                 "terminal.integrated.profiles.linux": {
