@@ -1,5 +1,6 @@
 import React from "react";
 import { useMsal } from "@azure/msal-react";
+import styles from "./AuthButton.module.css";
 
 const AuthButton = () => {
     const { instance, accounts } = useMsal();
@@ -13,9 +14,13 @@ const AuthButton = () => {
     };
 
     return accounts.length === 0 ? (
-        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleLogin} className={styles.authButton}>
+            Login
+        </button>
     ) : (
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} className={styles.authButton}>
+            Logout
+        </button>
     );
 };
 

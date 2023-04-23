@@ -1,0 +1,15 @@
+.groupsTable {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+}
+
+.groupsTable th,
+.groupsTable td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
 import { Client } from "@microsoft/microsoft-graph-client";
+import styles from "./GroupsList.module.css"
 
 const GroupsList = () => {
     const { instance, accounts } = useMsal();
@@ -50,15 +51,28 @@ const GroupsList = () => {
         fetchGroups();
     }, [accounts, instance]);
 
-    if (groups) {
+    if (groups && groups.length > 0) {
         return (
             <div>
                 <h3>Your Distribution Groups:</h3>
-                <ul>
-                    {groups.map((group) => (
-                        <li key={group.id}>{group.displayName}: {group.mail}</li>
-                    ))}
-                </ul>
+                <table className={styles.groupsTable}>
+                    <thead>
+                        <tr>
+                            <th>Display Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {groups.map((group) => (
+                            <tr key={group.id}>
+                                <td className={group.displayName.startsWith('(Archive)') ? styles.strikethrough : ''}>
+                                    {group.displayName}
+                                </td>
+                                <td>{group.mail}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         );
     }

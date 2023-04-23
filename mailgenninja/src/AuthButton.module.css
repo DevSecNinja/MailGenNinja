@@ -1,0 +1,13 @@
+/* AuthButton.module.css */
+.authButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    padding: 10px 24px;
+    cursor: pointer;
+    border-radius: 4px;
+}
