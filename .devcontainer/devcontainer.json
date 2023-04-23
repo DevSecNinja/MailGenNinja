@@ -15,9 +15,11 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "dbaeumer.vscode-eslint",
-                "hashicorp.terraform"
-            ],
+				"dbaeumer.vscode-eslint",
+				"hashicorp.terraform",
+				"redhat.vscode-yaml",
+				"DavidAnson.vscode-markdownlint"
+			],
             "settings": {
                 "terminal.integrated.profiles.linux": {
                     "zsh (login)": {
