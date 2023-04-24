@@ -39,7 +39,7 @@ const GroupsList = () => {
                 const filteredGroups = res.value.filter(
                     (group) =>
                         !group.displayName.endsWith("_CLAIMABLE") &&
-                        group.displayName.endsWith(".org")
+                        group.displayName.endsWith(process.env.REACT_APP_EMAIL_DOMAIN)
                 ).sort((a, b) => a.displayName.localeCompare(b.displayName));
 
                 setGroups(filteredGroups);
@@ -65,10 +65,10 @@ const GroupsList = () => {
                     <tbody>
                         {groups.map((group) => (
                             <tr key={group.id}>
-                                <td className={group.displayName.startsWith('(Archive)') ? styles.strikethrough : ''}>
+                                <td className={group.displayName.startsWith('(Archived)') ? styles.strikethrough : ''}>
                                     {group.displayName}
                                 </td>
-                                <td>{group.mail}</td>
+                                <a href={`mailto:${group.mail}`}>{group.mail}</a>  
                             </tr>
                         ))}
                     </tbody>

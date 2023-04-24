@@ -21,15 +21,17 @@ git clone https://github.com/<your-github-username>/mailgenninja.git
 cd mailgenninja  
 ```
 
-2. Install dependencies:
+2. Copy the `.env.example` file into `.env` and add the required parameters.
+
+3. Install dependencies:
 
 `npm install`
 
-3. Start the development server:
+4. Start the development server:
 
 `npm start`
 
-4. Open the app in your browser at <http://localhost:3000>.
+5. Open the app in your browser at <http://localhost:3000>.
 
 ## 🙌 Credits
 
