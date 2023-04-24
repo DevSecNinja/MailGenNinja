@@ -7,12 +7,18 @@ const GroupsList = () => {
     const { instance, accounts } = useMsal();
     const [groups, setGroups] = useState([]);
 
+    const claimedAndNonArchivedGroups = groups.filter((group) =>
+        !group.displayName.endsWith("_CLAIMABLE") && 
+        !group.displayName.startsWith("(Archived)") &&
+        group.displayName.endsWith(process.env.REACT_APP_EMAIL_DOMAIN)
+    );
+
     useEffect(() => {
         const fetchGroups = async () => {
             if (accounts.length === 0) return;
 
             const accessTokenRequest = {
-                scopes: ["User.Read", "Group.Read.All"],
+                scopes: ["Group.Read.All"],
                 account: accounts[0],
             };
 
@@ -36,11 +42,7 @@ const GroupsList = () => {
                     .query(queryParams)
                     .get();
 
-                const filteredGroups = res.value.filter(
-                    (group) =>
-                        !group.displayName.endsWith("_CLAIMABLE") &&
-                        group.displayName.endsWith(process.env.REACT_APP_EMAIL_DOMAIN)
-                ).sort((a, b) => a.displayName.localeCompare(b.displayName));
+                const filteredGroups = res.value.sort((a, b) => a.displayName.localeCompare(b.displayName));
 
                 setGroups(filteredGroups);
             } catch (error) {
@@ -54,7 +56,7 @@ const GroupsList = () => {
     if (groups && groups.length > 0) {
         return (
             <div>
-                <h3>Your Distribution Groups:</h3>
+                <h3>Your Mail-Enabled Security Groups ({claimedAndNonArchivedGroups.length}):</h3>
                 <table className={styles.groupsTable}>
                     <thead>
                         <tr>
@@ -63,12 +65,12 @@ const GroupsList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {groups.map((group) => (
+                        {claimedAndNonArchivedGroups.map((group) => (
                             <tr key={group.id}>
                                 <td className={group.displayName.startsWith('(Archived)') ? styles.strikethrough : ''}>
                                     {group.displayName}
                                 </td>
-                                <a href={`mailto:${group.mail}`}>{group.mail}</a>  
+                                <a href={`mailto:${group.mail}`}>{group.mail}</a>
                             </tr>
                         ))}
                     </tbody>
