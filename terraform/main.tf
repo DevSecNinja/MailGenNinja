@@ -36,7 +36,7 @@ provider "azurerm" {
 resource "azurecaf_name" "mailgenninja" {
   name           = local.app_name_lower
   resource_type  = "azurerm_resource_group"
-  resource_types = "azurerm_app_service" # No Static Web App resource type yet
+  resource_types = ["azurerm_app_service"] # No Static Web App resource type yet
   prefixes       = []
   suffixes       = [local.primary_location_short]
   clean_input    = true
@@ -47,7 +47,7 @@ resource "azurerm_resource_group" "mailgenninja" {
   location = local.primary_location
 }
 
-resource "azurerm_static_web_app" "mailgenninja" {
+resource "azurerm_static_site" "mailgenninja" {
   name                = azurecaf_name.mailgenninja.results["azurerm_app_service"]
   resource_group_name = azurerm_resource_group.mailgenninja.name
   location            = azurerm_resource_group.mailgenninja.location
