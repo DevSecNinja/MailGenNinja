@@ -52,7 +52,8 @@ resource "azurerm_static_site" "mailgenninja" {
   resource_group_name = azurerm_resource_group.mailgenninja.name
   location            = azurerm_resource_group.mailgenninja.location
 
-  # sku_name = "Free"
+  sku_tier = "Free"
+  sku_size = "Free"
 
   # repository_url = "https://github.com/${local.github_account}/${local.app_name}"
   # branch         = "main"
