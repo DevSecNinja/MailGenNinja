@@ -7,6 +7,23 @@ locals {
   primary_location_short = "weu"
 }
 
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 3.29.1"
+    }
+  }
+
+  cloud {
+    organization = "ravensberg"
+
+    workspaces {
+      name = "MailGenNinja"
+    }
+  }
+}
+
 provider "azurerm" {
   features {}
 }
