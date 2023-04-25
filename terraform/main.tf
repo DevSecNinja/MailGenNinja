@@ -52,14 +52,14 @@ resource "azurerm_static_site" "mailgenninja" {
   resource_group_name = azurerm_resource_group.mailgenninja.name
   location            = azurerm_resource_group.mailgenninja.location
 
-  sku_name = "Free"
+  # sku_name = "Free"
 
-  repository_url = "https://github.com/${local.github_account}/${local.app_name}"
-  branch         = "main"
+  # repository_url = "https://github.com/${local.github_account}/${local.app_name}"
+  # branch         = "main"
 
-  root_directory = "/"
-  api_directory  = "api"
-  app_location   = "build"
+  # root_directory = "/"
+  # api_directory  = "api"
+  # app_location   = "build"
 
-  build_command = "npm run build"
+  # build_command = "npm run build"
 }
