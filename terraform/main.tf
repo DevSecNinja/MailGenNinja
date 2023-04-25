@@ -38,7 +38,7 @@ resource "azurecaf_name" "mailgenninja" {
   resource_type  = "azurerm_resource_group"
   resource_types = ["azurerm_app_service"] # No Static Web App resource type yet
   prefixes       = []
-  suffixes       = [local.primary_location_short]
+  suffixes       = []
   clean_input    = true
 }
 
@@ -47,6 +47,10 @@ resource "azurerm_resource_group" "mailgenninja" {
   location = local.primary_location
 }
 
+# After the Static Site is provisioned, you'll need to associate your target repository,
+# which contains your web app, to the Static Site, by following the Azure Static Site document.
+# https://learn.microsoft.com/en-us/azure/static-web-apps/build-configuration?tabs=github-actions
+
 resource "azurerm_static_site" "mailgenninja" {
   name                = azurecaf_name.mailgenninja.results["azurerm_app_service"]
   resource_group_name = azurerm_resource_group.mailgenninja.name
@@ -54,13 +58,4 @@ resource "azurerm_static_site" "mailgenninja" {
 
   sku_tier = "Free"
   sku_size = "Free"
-
-  # repository_url = "https://github.com/${local.github_account}/${local.app_name}"
-  # branch         = "main"
-
-  # root_directory = "/"
-  # api_directory  = "api"
-  # app_location   = "build"
-
-  # build_command = "npm run build"
 }
