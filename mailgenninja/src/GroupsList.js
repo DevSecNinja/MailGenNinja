@@ -7,7 +7,7 @@ const GroupsList = () => {
     const { instance, accounts } = useMsal();
     const [groups, setGroups] = useState([]);
 
-    // TODO: Add validation to ensure that environment variables are set
+    // TODO: Add validation to ensure that environment variables are properly set
     const claimedAndNonArchivedGroups = groups.filter((group) =>
         !group.displayName.endsWith("_CLAIMABLE") && 
         !group.displayName.startsWith("(Archived)") &&
