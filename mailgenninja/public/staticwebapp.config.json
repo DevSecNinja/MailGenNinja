@@ -11,10 +11,14 @@
       }
     }
   },
+  "navigationFallback": {
+    "rewrite": "index.html"
+  },
   "routes": [
     {
       "route": "/login",
-      "rewrite": "/.auth/login/aad"
+      "rewrite": "/.auth/login/aad",
+      "allowedRoles": ["anonymous", "authenticated"]
     },
     {
       "route": "/.auth/login/github",
@@ -26,11 +30,8 @@
     },
     {
       "route": "/logout",
-      "redirect": "/.auth/logout"
-    },
-    {
-      "route": "/.auth/login/aad/callback",
-      "redirect": "/"
+      "redirect": "/.auth/logout",
+      "allowedRoles": ["anonymous", "authenticated"]
     },
     {
       "route": "/*",
