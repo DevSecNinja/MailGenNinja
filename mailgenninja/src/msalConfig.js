@@ -1,4 +1,4 @@
-import { PublicClientApplication } from "@azure/msal-browser";
+import { PublicClientApplication, BrowserCacheLocation } from "@azure/msal-browser";
 
 const msalConfig = {
     auth: {
