@@ -13,6 +13,11 @@
           "openIdIssuer": "TOBEREPLACED",
           "clientIdSettingName": "TOBEREPLACED",
           "clientSecretSettingName": "TOBEREPLACED"
+        },
+        "login": {
+          "loginParameters": [
+            "resource=https://graph.microsoft.com"
+          ]
         }
       }
     }
