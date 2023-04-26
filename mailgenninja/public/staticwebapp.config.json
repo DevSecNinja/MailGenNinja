@@ -17,8 +17,8 @@
       "redirect": "/.auth/logout"
     },
     {
-      "route": "/*",
-      "allowedRoles": ["siteuser"]
+      "route": "/",
+      "allowedRoles": ["authenticated"]
     }
   ],
   "auth": {
