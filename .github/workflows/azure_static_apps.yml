@@ -19,6 +19,14 @@ jobs:
         with:
           submodules: true
 
+      - uses: microsoft/variable-substitution@v1 
+        with:
+          files: 'mailgenninja/public/staticwebapp.config.json'
+        env:
+          auth.identityProviders.azureActiveDirectory.registration.openIdIssuer: https://login.microsoftonline.com/${{ secrets.AZURE_TENANT_ID }}/v2.0
+          auth.identityProviders.azureActiveDirectory.registration.clientIdSettingName: ${{ secrets.AZURE_CLIENT_ID }}
+          auth.identityProviders.azureActiveDirectory.registration.clientSecretSettingName: ${{ secrets.AZURE_CLIENT_SECRET }}
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
