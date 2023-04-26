@@ -25,7 +25,7 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform fmt
-        working-directory: terraform  
+        working-directory: terraform
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
