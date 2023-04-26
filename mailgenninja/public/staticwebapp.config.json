@@ -2,7 +2,7 @@
   "routes": [
     {
       "route": "/login",
-      "rewrite": "/.auth/login/aad",
+      "rewrite": "/.auth/login/aad"
     },
     {
       "route": "/.auth/login/github",
@@ -14,7 +14,7 @@
     },
     {
       "route": "/logout",
-      "redirect": "/.auth/logout",
+      "redirect": "/.auth/logout"
     },
     {
       "route": "/*",
