@@ -26,7 +26,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations ######
-          app_location: "mailgenninja/src" # App source code path relative to repository root
+          app_location: "mailgenninja" # App source code path relative to repository root
           api_location: "mailgenninja/api" # Api source code path relative to repository root - optional
           output_location: "mailgenninja/public" # Built app content directory, relative to app_location - optional
           ###### End of Repository/Build Configurations ######
