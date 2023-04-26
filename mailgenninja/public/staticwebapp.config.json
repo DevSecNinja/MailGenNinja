@@ -3,7 +3,6 @@
     {
       "route": "/login",
       "rewrite": "/.auth/login/aad",
-      "allowedRoles": ["anonymous", "authenticated"]
     },
     {
       "route": "/.auth/login/github",
@@ -16,11 +15,10 @@
     {
       "route": "/logout",
       "redirect": "/.auth/logout",
-      "allowedRoles": ["anonymous", "authenticated"]
     },
     {
       "route": "/*",
-      "allowedRoles": ["authenticated"]
+      "allowedRoles": ["siteuser"]
     }
   ],
   "auth": {
