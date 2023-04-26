@@ -1,8 +1,23 @@
 {
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "TOBEREPLACED",
+          "clientIdSettingName": "TOBEREPLACED",
+          "clientSecretSettingName": "TOBEREPLACED"
+        }
+      }
+    }
+  },
+  "navigationFallback": {
+    "rewrite": "index.html"
+  },
   "routes": [
     {
       "route": "/login",
-      "rewrite": "/.auth/login/aad"
+      "rewrite": "/.auth/login/aad",
+      "allowedRoles": ["anonymous", "authenticated"]
     },
     {
       "route": "/.auth/login/github",
@@ -14,40 +29,18 @@
     },
     {
       "route": "/logout",
-      "redirect": "/.auth/logout"
+      "redirect": "/.auth/logout",
+      "allowedRoles": ["anonymous", "authenticated"]
     },
     {
-      "route": "/",
+      "route": "/*",
       "allowedRoles": ["authenticated"]
     }
   ],
-  "auth": {
-    "identityProviders": {
-      "azureActiveDirectory": {
-        "registration": {
-          "openIdIssuer": "TOBEREPLACED",
-          "clientIdSettingName": "TOBEREPLACED",
-          "clientSecretSettingName": "TOBEREPLACED"
-        },
-        "login": {
-          "loginParameters": [
-            "resource=https://graph.microsoft.com"
-          ]
-        }
-      }
-    }
-  },
   "responseOverrides": {
     "401": {
       "redirect": "/login",
       "statusCode": 302
     }
-  },
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
-  },
-  "globalHeaders": {
-    "Cache-Control": "no-cache"
   }
 }
