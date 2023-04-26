@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
   "auth": {
     "identityProviders": {
       "azureActiveDirectory": {
@@ -10,14 +11,10 @@
       }
     }
   },
-  "navigationFallback": {
-    "rewrite": "index.html"
-  },
   "routes": [
     {
       "route": "/login",
-      "rewrite": "/.auth/login/aad",
-      "allowedRoles": ["anonymous", "authenticated"]
+      "rewrite": "/.auth/login/aad"
     },
     {
       "route": "/.auth/login/github",
@@ -29,8 +26,11 @@
     },
     {
       "route": "/logout",
-      "redirect": "/.auth/logout",
-      "allowedRoles": ["anonymous", "authenticated"]
+      "redirect": "/.auth/logout"
+    },
+    {
+      "route": "/.auth/login/aad/callback",
+      "redirect": "/"
     },
     {
       "route": "/*",
