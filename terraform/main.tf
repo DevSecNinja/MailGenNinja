@@ -56,6 +56,6 @@ resource "azurerm_static_site" "mailgenninja" {
   resource_group_name = azurerm_resource_group.mailgenninja.name
   location            = azurerm_resource_group.mailgenninja.location
 
-  sku_tier = "Free"
-  sku_size = "Free"
+  sku_tier = "Standard"
+  sku_size = "Standard"
 }
