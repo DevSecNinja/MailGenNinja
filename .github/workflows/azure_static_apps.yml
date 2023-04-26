@@ -24,14 +24,11 @@ jobs:
         with:
           node-version: 14
 
-      - task: Bash@3
-        displayName: Build
+      - name: Install dependencies and build
         working-directory: mailgenninja
-        inputs:
-          targetType: 'inline'
-          script: |        
-            npm ci 
-            npm run build
+        run: |
+          npm ci  
+          npm run build
         env:
           REACT_APP_AZURE_AD_APP_TENANT_ID: ${{ secrets.REACT_APP_AZURE_AD_APP_TENANT_ID }}
           REACT_APP_AZURE_AD_APP_CLIENT_ID: ${{ secrets.REACT_APP_AZURE_AD_APP_CLIENT_ID }}
