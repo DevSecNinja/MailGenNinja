@@ -32,5 +32,6 @@ jobs:
 
       - name: Build and push image
         id: build-image
+        working-directory: mailgenninja
         run: |
           az acr build --image ${{ env.ACR_NAME }}/${{ env.APP_NAME }}:${{ github.sha }} --registry ${{ env.ACR_NAME }} --file "Dockerfile" .
