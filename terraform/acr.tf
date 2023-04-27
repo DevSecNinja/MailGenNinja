@@ -15,7 +15,7 @@ resource "azurerm_container_registry" "acr" {
   location                      = azurerm_resource_group.mailgenninja.location
   resource_group_name           = azurerm_resource_group.mailgenninja.name
   sku                           = "Basic" # Premium
-  admin_enabled                 = true
+  admin_enabled                 = false
   public_network_access_enabled = true
 
   identity {
