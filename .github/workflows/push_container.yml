@@ -15,8 +15,10 @@ env:
   ACR_NAME: crmailgenninja
 
 jobs:
-  build-and-deploy:
+  build-and-push:
+    name: Build and push
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: "Checkout GitHub Action"
         uses: actions/checkout@main
