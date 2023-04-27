@@ -13,6 +13,7 @@ on:
 env:
   APP_NAME: mailgenninja
   ACR_NAME: crmailgenninja
+  ACR_RESOURCE_GROUP_NAME: rg-mailgenninja
 
 jobs:
   build-and-push:
@@ -34,4 +35,4 @@ jobs:
         id: build-image
         working-directory: mailgenninja
         run: |
-          az acr build --image ${{ env.ACR_NAME }}/${{ env.APP_NAME }}:${{ github.sha }} --registry ${{ env.ACR_NAME }} --file "Dockerfile" .
+          az acr build --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }} --resource-group ${{ env.ACR_RESOURCE_GROUP_NAME }} --image ${{ env.ACR_NAME }}/${{ env.APP_NAME }}:${{ github.sha }} --registry ${{ env.ACR_NAME }} --file "Dockerfile" .
