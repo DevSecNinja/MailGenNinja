@@ -24,13 +24,13 @@ resource "azurerm_container_registry" "acr" {
 }
 
 resource "azurerm_role_assignment" "acr_sa_pull" {
-  principal_id         = azurerm_client_config.core.object_id
+  principal_id         = data.azurerm_client_config.core.object_id
   role_definition_name = "AcrPull"
   scope                = azurerm_container_registry.acr.id
 }
 
 resource "azurerm_role_assignment" "acr_sa_push" {
-  principal_id         = azurerm_client_config.core.object_id
+  principal_id         = data.azurerm_client_config.core.object_id
   role_definition_name = "AcrPush"
   scope                = azurerm_container_registry.acr.id
 }
