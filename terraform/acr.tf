@@ -34,3 +34,11 @@ resource "azurerm_role_assignment" "acr_sa_push" {
   role_definition_name = "AcrPush"
   scope                = azurerm_container_registry.acr.id
 }
+
+# Internal Container Apps
+
+resource "azurerm_role_assignment" "acr_sa_pull" {
+  principal_id         = "e1d5af1c-86de-4ebf-98a7-62064e394408"
+  role_definition_name = "AcrPull"
+  scope                = azurerm_container_registry.acr.id
+}
