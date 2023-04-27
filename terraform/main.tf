@@ -33,6 +33,11 @@ provider "azurerm" {
   features {}
 }
 
+# Obtain client configuration from the un-aliased provider
+data "azurerm_client_config" "core" {
+  provider = azurerm
+}
+
 resource "azurecaf_name" "mailgenninja" {
   name           = local.app_name_lower
   resource_type  = "azurerm_resource_group"
