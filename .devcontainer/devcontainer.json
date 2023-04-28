@@ -18,7 +18,8 @@
 				"dbaeumer.vscode-eslint",
 				"hashicorp.terraform",
 				"redhat.vscode-yaml",
-				"DavidAnson.vscode-markdownlint"
+				"DavidAnson.vscode-markdownlint",
+				"eamodio.gitlens"
 			],
             "settings": {
                 "terminal.integrated.profiles.linux": {
