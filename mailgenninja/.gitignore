@@ -24,4 +24,3 @@ yarn-error.log*
 
 # Added by me
 .env
-public/runtime-env.js
