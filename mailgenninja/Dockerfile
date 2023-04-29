@@ -1,5 +1,5 @@
 # https://jsramblings.com/dockerizing-a-react-app/
-FROM node:14-alpine as builder
+FROM node:18-alpine as builder
 # Set the working directory to /app inside the container
 WORKDIR /app
 # Copy app files
