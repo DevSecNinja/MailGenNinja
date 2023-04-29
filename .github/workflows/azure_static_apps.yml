@@ -59,15 +59,6 @@ jobs:
           # output_location: "mailgenninja/public" # Built app content directory, relative to app_location - optional
           ###### End of Repository/Build Configurations ######
 
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'mailgenninjatest'
-          slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
-          package: "mailgenninja/build"
-
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
